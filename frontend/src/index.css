@@ -1,0 +1,153 @@
+:root {
+  font-family: 'Manrope', 'Segoe UI', sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: #0f172a;
+  background-color: #f6f8fb;
+
+  --bg-base: #f4f6fb;
+  --bg-soft: #ecf1fb;
+  --bg-accent: rgba(120, 170, 255, 0.22);
+  --panel: rgba(255, 255, 255, 0.7);
+  --panel-strong: rgba(255, 255, 255, 0.92);
+  --panel-border: rgba(190, 200, 215, 0.45);
+  --text: #0f172a;
+  --muted: #5b667a;
+  --accent: #1a73e8;
+  --accent-strong: #1b5fcc;
+  --accent-soft: rgba(26, 115, 232, 0.16);
+  --shadow: 0 18px 35px rgba(15, 23, 42, 0.12);
+  --glow: 0 0 24px rgba(120, 170, 255, 0.3);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: var(--bg-base);
+  color: var(--text);
+  position: relative;
+}
+
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+}
+
+body::before {
+  background:
+    radial-gradient(circle at 15% 20%, var(--bg-accent), transparent 55%),
+    radial-gradient(circle at 85% 10%, rgba(165, 210, 255, 0.28), transparent 45%),
+    radial-gradient(circle at 70% 85%, rgba(130, 160, 220, 0.12), transparent 60%),
+    linear-gradient(140deg, #f7f8fc 0%, #edf2fb 50%, #f4f6fb 100%);
+}
+
+body::after {
+  background-image:
+    radial-gradient(circle at 30% 30%, rgba(26, 115, 232, 0.08), transparent 45%),
+    radial-gradient(circle at 70% 70%, rgba(15, 23, 42, 0.05), transparent 55%);
+  opacity: 0.5;
+  z-index: -1;
+}
+
+#root {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+/* Global markdown styling */
+.markdown-content {
+  padding: 12px;
+  color: var(--text);
+}
+
+.markdown-content p {
+  margin: 0 0 12px 0;
+}
+
+.markdown-content p:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-content h1,
+.markdown-content h2,
+.markdown-content h3,
+.markdown-content h4,
+.markdown-content h5,
+.markdown-content h6 {
+  margin: 16px 0 8px 0;
+}
+
+.markdown-content h1:first-child,
+.markdown-content h2:first-child,
+.markdown-content h3:first-child,
+.markdown-content h4:first-child,
+.markdown-content h5:first-child,
+.markdown-content h6:first-child {
+  margin-top: 0;
+}
+
+.markdown-content ul,
+.markdown-content ol {
+  margin: 0 0 12px 0;
+  padding-left: 24px;
+}
+
+.markdown-content li {
+  margin: 4px 0;
+}
+
+.markdown-content pre {
+  background: rgba(15, 23, 42, 0.06);
+  padding: 12px;
+  border-radius: 4px;
+  overflow-x: auto;
+  margin: 0 0 12px 0;
+}
+
+.markdown-content code {
+  background: rgba(15, 23, 42, 0.08);
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-family: monospace;
+  font-size: 0.9em;
+}
+
+.markdown-content pre code {
+  background: none;
+  padding: 0;
+}
+
+.markdown-content blockquote {
+  margin: 0 0 12px 0;
+  padding-left: 16px;
+  border-left: 4px solid rgba(26, 115, 232, 0.3);
+  color: var(--muted);
+}
+
+@keyframes float-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
