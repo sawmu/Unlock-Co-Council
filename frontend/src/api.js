@@ -2,7 +2,8 @@
  * API client for the Unlock & Co Council backend.
  */
 
-const API_BASE = 'http://localhost:8001';
+const API_BASE =
+  import.meta.env.VITE_API_BASE || 'http://localhost:8001';
 
 export const api = {
   /**
