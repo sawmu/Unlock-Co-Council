@@ -12,6 +12,7 @@ export default function ChatInterface({
 }) {
   const [input, setInput] = useState('');
   const messagesEndRef = useRef(null);
+  const conversationTitle = conversation?.title || 'New Conversation';
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -37,24 +38,23 @@ export default function ChatInterface({
     }
   };
 
-  if (!conversation) {
-    return (
-      <div className="chat-interface">
-        <div className="empty-state">
-          <h2>Welcome to Unlock &amp; Co Council</h2>
-          <p>Create a new conversation to get started</p>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <div className="chat-interface">
+      <div className="chat-header">
+        <div className="chat-header-title">Unlock &amp; Co Council</div>
+        <div className="chat-header-subtitle">{conversationTitle}</div>
+      </div>
+
       <div className="messages-container">
-        {conversation.messages.length === 0 ? (
+        {!conversation ? (
+          <div className="empty-state">
+            <h2>Welcome to Unlock &amp; Co Council</h2>
+            <p>Create a new conversation to get started.</p>
+          </div>
+        ) : conversation.messages.length === 0 ? (
           <div className="empty-state">
             <h2>Start a conversation</h2>
-            <p>Ask a question to consult the Unlock &amp; Co Council</p>
+            <p>Ask a question to consult the Unlock &amp; Co Council.</p>
           </div>
         ) : (
           conversation.messages.map((msg, index) => (
@@ -121,22 +121,29 @@ export default function ChatInterface({
       </div>
 
       <form className="input-form" onSubmit={handleSubmit}>
-        <textarea
-          className="message-input"
-          placeholder="Ask your question... (Shift+Enter for new line, Enter to send)"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          onKeyDown={handleKeyDown}
-          disabled={isLoading}
-          rows={3}
-        />
-        <button
-          type="submit"
-          className="send-button"
-          disabled={!input.trim() || isLoading}
-        >
-          Send
-        </button>
+        <div className="input-shell">
+          <textarea
+            className="message-input"
+            placeholder={
+              conversation
+                ? 'Ask your question... (Shift+Enter for new line, Enter to send)'
+                : 'Create a new conversation to begin.'
+            }
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            onKeyDown={handleKeyDown}
+            disabled={isLoading || !conversation}
+            rows={2}
+          />
+          <button
+            type="submit"
+            className="send-button"
+            disabled={!input.trim() || isLoading || !conversation}
+          >
+            Send
+          </button>
+        </div>
+        <div className="input-hint">Shift+Enter for a new line.</div>
       </form>
     </div>
   );

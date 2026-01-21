@@ -189,13 +189,7 @@ function App() {
         onSelectConversation={handleSelectConversation}
         onNewConversation={handleNewConversation}
       />
-      <div className="main">
-        <header className="topbar">
-          <div>
-            <div className="topbar-title">Unlock &amp; Co Council</div>
-            <div className="topbar-subtitle">Workspace</div>
-          </div>
-        </header>
+      <div className="main-panel">
         <ChatInterface
           conversation={currentConversation}
           onSendMessage={handleSendMessage}

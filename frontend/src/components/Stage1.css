@@ -1,20 +1,19 @@
 .stage {
   margin: 24px 0;
   padding: 20px;
-  background: var(--panel);
-  border-radius: 16px;
-  border: 1px solid var(--panel-border);
-  box-shadow: var(--shadow);
-  backdrop-filter: blur(18px);
-  animation: float-in 0.6s ease both;
+  background: rgba(255, 255, 255, 0.65);
+  border-radius: 18px;
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 16px 40px rgba(15, 27, 45, 0.12);
 }
 
 .stage-title {
   margin: 0 0 16px 0;
-  color: var(--text);
+  color: var(--ink-900);
   font-size: 16px;
   font-weight: 600;
-  font-family: 'Sora', 'Manrope', sans-serif;
 }
 
 .tabs {
@@ -26,44 +25,44 @@
 
 .tab {
   padding: 8px 16px;
-  background: rgba(255, 255, 255, 0.75);
-  border: 1px solid rgba(180, 195, 215, 0.6);
-  border-radius: 6px 6px 0 0;
-  color: var(--muted);
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 12px 12px 6px 6px;
+  color: var(--ink-500);
   cursor: pointer;
   font-size: 14px;
   transition: all 0.2s;
 }
 
 .tab:hover {
-  background: rgba(26, 115, 232, 0.1);
-  color: var(--text);
-  border-color: var(--accent);
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--ink-900);
+  border-color: rgba(58, 123, 213, 0.4);
 }
 
 .tab.active {
   background: rgba(255, 255, 255, 0.95);
-  color: var(--accent-strong);
-  border-color: var(--accent);
-  border-bottom-color: transparent;
+  color: var(--accent-500);
+  border-color: rgba(58, 123, 213, 0.5);
+  border-bottom-color: rgba(255, 255, 255, 0.95);
   font-weight: 600;
 }
 
 .tab-content {
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 255, 255, 0.85);
   padding: 16px;
-  border-radius: 12px;
-  border: 1px solid rgba(180, 195, 215, 0.6);
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
 }
 
 .model-name {
-  color: var(--muted);
+  color: var(--ink-300);
   font-size: 12px;
   margin-bottom: 12px;
   font-family: monospace;
 }
 
 .response-text {
-  color: var(--text);
+  color: var(--ink-900);
   line-height: 1.6;
 }
