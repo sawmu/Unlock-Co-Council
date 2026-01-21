@@ -1,0 +1,44 @@
+.stage {
+  margin: 24px 0;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 18px;
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 16px 40px rgba(15, 27, 45, 0.12);
+}
+
+.stage3 {
+  background: rgba(231, 255, 242, 0.6);
+  border-color: rgba(86, 198, 140, 0.35);
+}
+
+.stageTitle {
+  margin: 0 0 16px 0;
+  color: var(--ink-900);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.finalResponse {
+  background: rgba(255, 255, 255, 0.85);
+  padding: 20px;
+  border-radius: 14px;
+  border: 1px solid rgba(86, 198, 140, 0.3);
+  box-shadow: 0 12px 28px rgba(86, 198, 140, 0.18);
+}
+
+.chairmanLabel {
+  color: #2e8b57;
+  font-size: 12px;
+  font-family: monospace;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.finalText {
+  color: var(--ink-900);
+  line-height: 1.7;
+  font-size: 15px;
+}
