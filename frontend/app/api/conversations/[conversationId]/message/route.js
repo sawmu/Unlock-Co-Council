@@ -6,6 +6,9 @@ import {
 } from '../../../../../lib/storage.js';
 import { generateConversationTitle, runFullCouncil } from '../../../../../lib/council.js';
 
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
+
 export async function POST(request, { params }) {
   const { conversationId } = await params;
   const body = await request.json();
