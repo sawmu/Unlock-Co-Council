@@ -1,5 +1,8 @@
 {
-  "/api/conversations/route": "app/api/conversations/route.js",
+  "/api/conversations/[conversationId]/message/stream/route": "app/api/conversations/[conversationId]/message/stream/route.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/api/conversations/[conversationId]/message/route": "app/api/conversations/[conversationId]/message/route.js",
   "/api/conversations/[conversationId]/route": "app/api/conversations/[conversationId]/route.js",
+  "/api/conversations/route": "app/api/conversations/route.js",
   "/page": "app/page.js"
 }
