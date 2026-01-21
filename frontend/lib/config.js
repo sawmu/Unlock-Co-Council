@@ -33,4 +33,6 @@ export const CHAIRMAN_MODEL =
   process.env.CHAIRMAN_MODEL || 'google/gemini-3-pro-preview';
 export const DATA_DIR =
   process.env.DATA_DIR ||
-  path.join(process.cwd(), '..', 'data', 'conversations');
+  (process.env.VERCEL
+    ? path.join('/tmp', 'conversations')
+    : path.join(process.cwd(), '..', 'data', 'conversations'));
