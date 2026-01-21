@@ -32,7 +32,7 @@ export async function getConversation(conversationId) {
   try {
     const raw = await fs.readFile(filePath, 'utf8');
     return JSON.parse(raw);
-  } catch (error) {
+  } catch (_error) {
     return null;
   }
 }

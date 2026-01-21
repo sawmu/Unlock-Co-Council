@@ -16,7 +16,7 @@ const parseModels = () => {
     if (Array.isArray(parsed) && parsed.length > 0) {
       return parsed;
     }
-  } catch (error) {
+  } catch (_error) {
     const csv = raw.split(',').map((item) => item.trim()).filter(Boolean);
     if (csv.length > 0) return csv;
   }
