@@ -10,6 +10,7 @@ export default function HomePage() {
   const [currentConversationId, setCurrentConversationId] = useState(null);
   const [currentConversation, setCurrentConversation] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const lastConversationKey = 'llm-council:last-conversation-id';
 
   const loadConversations = useCallback(async () => {
     try {
@@ -33,6 +34,34 @@ export default function HomePage() {
   useEffect(() => {
     loadConversations();
   }, [loadConversations]);
+
+  // Restore last selected conversation or default to most recent.
+  useEffect(() => {
+    if (currentConversationId || conversations.length === 0) return;
+    let nextId = null;
+    try {
+      const storedId = window.localStorage.getItem(lastConversationKey);
+      if (storedId && conversations.some((conv) => conv.id === storedId)) {
+        nextId = storedId;
+      }
+    } catch (error) {
+      console.warn('Failed to read last conversation from storage:', error);
+    }
+    if (!nextId) {
+      nextId = conversations[0].id;
+    }
+    setCurrentConversationId(nextId);
+  }, [conversations, currentConversationId]);
+
+  // Persist last selected conversation.
+  useEffect(() => {
+    if (!currentConversationId) return;
+    try {
+      window.localStorage.setItem(lastConversationKey, currentConversationId);
+    } catch (error) {
+      console.warn('Failed to save last conversation to storage:', error);
+    }
+  }, [currentConversationId]);
 
   // Load conversation details when selected
   useEffect(() => {
