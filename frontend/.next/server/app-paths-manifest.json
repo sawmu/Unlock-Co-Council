@@ -1,1 +1,5 @@
-{}
+{
+  "/api/conversations/route": "app/api/conversations/route.js",
+  "/api/conversations/[conversationId]/route": "app/api/conversations/[conversationId]/route.js",
+  "/page": "app/page.js"
+}

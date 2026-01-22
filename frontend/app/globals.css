@@ -44,7 +44,8 @@ body {
 
 .app {
   display: flex;
-  height: 100vh;
+  min-height: 100vh;
+  height: 100dvh;
   width: 100vw;
   overflow: hidden;
   background: transparent;
@@ -56,6 +57,7 @@ body {
   display: flex;
   flex-direction: column;
   padding: 24px 32px;
+  min-height: 0;
 }
 
 @media (max-width: 1024px) {
@@ -69,6 +71,16 @@ body {
 }
 
 @media (max-width: 720px) {
+  body {
+    overflow-y: auto;
+  }
+
+  .app {
+    height: auto;
+    min-height: 100dvh;
+    overflow: visible;
+  }
+
   .main-panel {
     padding: 16px;
   }
