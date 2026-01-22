@@ -42,7 +42,12 @@ export default function ChatInterface({
     <div className={styles.chatInterface}>
       <div className={styles.chatHeader}>
         <div className={styles.chatHeaderTitle}>Unlock &amp; Co Council</div>
-        <div className={styles.chatHeaderSubtitle}>{conversationTitle}</div>
+        <div className={styles.chatHeaderSubtitle}>
+          <span className={styles.chatHeaderSubtitleText}>
+           Technology, Design & Digital Media Services
+          </span>
+         
+        </div>
       </div>
 
       <div className={styles.messagesContainer}>

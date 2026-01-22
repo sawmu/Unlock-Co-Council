@@ -28,6 +28,9 @@
   margin-top: 6px;
   color: var(--ink-500);
   font-size: 13px;
+}
+
+.chatHeaderSubtitleText {
   text-transform: uppercase;
   letter-spacing: 0.2em;
 }

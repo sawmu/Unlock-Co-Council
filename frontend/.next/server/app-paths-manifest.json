@@ -1,5 +1,6 @@
 {
   "/api/conversations/route": "app/api/conversations/route.js",
   "/api/conversations/[conversationId]/route": "app/api/conversations/[conversationId]/route.js",
+  "/_not-found/page": "app/_not-found/page.js",
   "/page": "app/page.js"
 }

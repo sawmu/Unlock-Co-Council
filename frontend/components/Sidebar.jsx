@@ -6,6 +6,7 @@ export default function Sidebar({
   currentConversationId,
   onSelectConversation,
   onNewConversation,
+  onDeleteConversation,
 }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -17,6 +18,11 @@ export default function Sidebar({
   const handleSelectConversation = (id) => {
     onSelectConversation(id);
     setIsMenuOpen(false);
+  };
+
+  const handleDeleteConversation = (event, id) => {
+    event.stopPropagation();
+    onDeleteConversation(id);
   };
 
   return (
@@ -32,7 +38,7 @@ export default function Sidebar({
         >
           ☰
         </button>
-        <div className={styles.mobileTitle}>Unlock &amp; Co Council</div>
+        <div className={styles.mobileTitle}>Unlock &amp; Co</div>
         <div className={styles.mobileSpacer} aria-hidden="true" />
       </div>
 
@@ -48,12 +54,15 @@ export default function Sidebar({
         className={`${styles.sidebar} ${isMenuOpen ? styles.sidebarOpen : ''}`}
       >
         <div className={styles.sidebarHeader}>
-          <h1>Unlock &amp; Co Council</h1>
+          <h1 className={styles.sidebarTitle}>
+            <span className={styles.titleIcon} aria-hidden="true" />
+            <span className={styles.titleText}>Unlock &amp; Co</span>
+          </h1>
           <button
             className={styles.newConversationBtn}
             onClick={handleNewConversation}
           >
-            + New Conversation
+            New Conversation
           </button>
         </div>
 
@@ -69,12 +78,23 @@ export default function Sidebar({
                 }`}
                 onClick={() => handleSelectConversation(conv.id)}
               >
-                <div className={styles.conversationTitle}>
-                  {conv.title || 'New Conversation'}
+                <div className={styles.conversationInfo}>
+                  <div className={styles.conversationTitle}>
+                    {conv.title || 'New Conversation'}
+                  </div>
+                  <div className={styles.conversationMeta}>
+                    <span className={styles.messageIcon} aria-hidden="true" />
+                    {conv.message_count}
+                  </div>
                 </div>
-                <div className={styles.conversationMeta}>
-                  {conv.message_count} messages
-                </div>
+                <button
+                  className={styles.deleteButton}
+                  type="button"
+                  aria-label="Delete conversation"
+                  onClick={(event) => handleDeleteConversation(event, conv.id)}
+                >
+                  <span className={styles.deleteIcon} aria-hidden="true" />
+                </button>
               </div>
             ))
           )}

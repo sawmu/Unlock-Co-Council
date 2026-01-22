@@ -43,6 +43,56 @@ export const api = {
   },
 
   /**
+   * Delete a specific conversation.
+   */
+  async deleteConversation(conversationId) {
+    const response = await fetch(
+      `${API_BASE}/api/conversations/${conversationId}`,
+      {
+        method: 'DELETE',
+      }
+    );
+    if (response.ok) {
+      return response.json();
+    }
+
+    if (response.status === 405) {
+      const fallback = await fetch(
+        `${API_BASE}/api/conversations/${conversationId}/delete`,
+        {
+          method: 'POST',
+        }
+      );
+      if (fallback.ok) {
+        return fallback.json();
+      }
+      let fallbackDetail = '';
+      try {
+        fallbackDetail = await fallback.text();
+      } catch (error) {
+        fallbackDetail = '';
+      }
+      throw new Error(
+        `Failed to delete conversation (${fallback.status}): ${
+          fallbackDetail || fallback.statusText
+        }`
+      );
+    }
+
+    let detail = '';
+    try {
+      detail = await response.text();
+    } catch (error) {
+      detail = '';
+    }
+    throw new Error(
+      `Failed to delete conversation (${response.status}): ${
+        detail || response.statusText
+      }`
+    );
+  },
+
+  /**
    * Send a message in a conversation.
    */
   async sendMessage(conversationId, content) {
